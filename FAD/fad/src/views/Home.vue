@@ -15,8 +15,32 @@
             <span class="icon-p">Python</span>
           </div>
           <div class="mid">
+            <img class="icon" src="../assets/img/r-icon.svg">
+            <span class="icon-p">R</span>
+          </div>
+          <div class="mid">
+            <img class="icon" src="../assets/img/java-icon.svg">
+            <span class="icon-p">Java</span>
+          </div>
+          <div class="mid">
+            <img class="icon" src="../assets/img/julia-icon.svg">
+            <span class="icon-p">Julia</span>
+          </div>
+          <div class="mid">
             <img class="icon" src="../assets/img/ubuntu-icon.svg">
             <span class="icon-p">Ubuntu</span>
+          </div>
+          <div class="mid">
+            <img class="icon" src="../assets/img/debian-icon.svg">
+            <span class="icon-p">Debian</span>
+          </div>
+          <div class="mid">
+            <img class="icon" src="../assets/img/nvidia-icon.svg">
+            <span class="icon-p">Nvidia CUDA</span>
+          </div>
+          <div class="mid">
+            <img class="icon" src="../assets/img/deeplearning4j-icon.svg">
+            <span class="icon-p">Deeplearning4j</span>
           </div>
           <div class="mid">
             <img class="icon" src="../assets/img/pytorch-icon.svg">
@@ -134,7 +158,7 @@ h1{
     padding: 5%;
     height: 600px;
     background-color: #1245A8;
-    border-radius: 0 0 50px 50px;
+    border-radius: 0 0 40px 40px;
   }
 
   .content{

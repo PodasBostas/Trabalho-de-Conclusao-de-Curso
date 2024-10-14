@@ -13,8 +13,8 @@ const router = createRouter({
             component: ()=> import ('../views/Login.vue')
         },
         {
-            path: '/signin',
-            component: ()=> import ('../views/Signin.vue')
+            path: '/signup',
+            component: ()=> import ('../views/Signup.vue')
         },
         {
             path: '/history',
@@ -27,6 +27,18 @@ const router = createRouter({
         {
             path: '/overview',
             component: ()=> import ('../views/Overview.vue')
+        },
+        {
+            path: '/overview/languages',
+            component: ()=> import ('../views/Languages.vue')
+        },
+        {
+            path: '/overview/frameworks',
+            component: ()=> import ('../views/Frameworks.vue')
+        },
+        {
+            path: '/overview/operatingsystems',
+            component: ()=> import ('../views/OperatingSystems.vue')
         }
     ]
 })

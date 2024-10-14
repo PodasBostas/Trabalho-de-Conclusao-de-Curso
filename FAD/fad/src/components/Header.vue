@@ -5,7 +5,7 @@
         </router-link>
         <div id="buttons">
             <router-link to="/login"><button id="login">Log in</button></router-link>
-            <router-link to="/signin"><button id="signin">Sign in</button></router-link>
+            <router-link to="/signin"><button id="signup">Sign up</button></router-link>
         </div>
     </div>
 </template>
@@ -43,7 +43,7 @@
     width: 60px;
 }
 
-#signin{
+#signup{
     background-color: transparent;
     border: 0.5px solid #fff;
 }
@@ -63,7 +63,7 @@ button{
     cursor: pointer;
 }
 
-#signin:hover{
+#signup:hover{
     background-color: #113781;
     cursor: pointer;
 }
