@@ -5,7 +5,7 @@
         </router-link>
         <div id="buttons">
             <router-link to="/login"><button id="login">Log in</button></router-link>
-            <router-link to="/signin"><button id="signup">Sign up</button></router-link>
+            <router-link to="/signup"><button id="signup">Sign up</button></router-link>
         </div>
     </div>
 </template>
