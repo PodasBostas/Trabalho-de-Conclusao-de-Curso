@@ -3,7 +3,7 @@
         <Sidebar />
         <div class="container">
             <Back />
-            <form class="interface">
+            <form class="interface" @submit.prevent="submitForm">
                 <h1>Crie seu dockerfile</h1>
                 <div class="input-requeriments">
                     <input type="file">
@@ -13,34 +13,40 @@
                     <div class="top">
                         <img class="base-logo" src="../assets/img/tensorflow-icon.svg">
                         <label for="rad1">Tensorflow</label>
-                        <input type="radio" name="base-image" class="radio" id="rad1" value="tensorflow/tensorflow:latest">
+                        <input type="radio" name="base-image" class="radio" id="rad1" value="tensorflow/tensorflow:latest" v-model="baseImage">
                     </div>
                     <div class="mid">
                         <img class="base-logo" src="../assets/img/pytorch-icon.svg">
                         <label for="rad4">Pytorch</label>
-                        <input type="radio" name="base-image" class="radio" id="rad2" value="pytorch/pytorch:latest">
+                        <input type="radio" name="base-image" class="radio" id="rad2" value="pytorch/pytorch:latest" v-model="baseImage">
                     </div>
                     <div class="mid">
                         <img class="base-logo" src="../assets/img/langchain-icon.svg">
                         <label for="rad4">Langchain</label>
-                        <input type="radio" name="base-image" class="radio" id="rad3" value="langchain/langchain:latest">
+                        <input type="radio" name="base-image" class="radio" id="rad3" value="langchain/langchain:latest" v-model="baseImage">
                     </div>
                     <div class="mid">
                         <img class="base-logo" src="../assets/img/deeplearning4j-icon.svg">
                         <label for="rad4">Deeplearning4j</label>
-                        <input type="radio" name="base-image" class="radio" id="rad3" value="deeplearning4j/deeplearning4j:latest">
+                        <input type="radio" name="base-image" class="radio" id="rad3" value="deeplearning4j/deeplearning4j:latest" v-model="baseImage">
                     </div>
                     <div class="bottom">
                         <img class="base-logo" src="../assets/img/nvidia-icon.svg">
                         <label for="rad4">Nvidia CUDA</label>
-                        <input type="radio" name="base-image" class="radio" id="rad4" value="nvidia/cuda:latest">
+                        <input type="radio" name="base-image" class="radio" id="rad4" value="nvidia/cuda:latest" v-model="baseImage">
+                    </div>
+                    <div v-if="errorMessage" class="error-message">
+                        {{ errorMessage }}
                     </div>
                 </div>
-                <div class="input-door">
-                    <input class="door" type="text" placeholder="Insira qual porta deseja utilizar">
+                <div class="input-port">
+                    <input class="port" type="text" placeholder="Insira qual porta deseja utilizar (Exemplo: 8080)" v-model="port">
                 </div>
                 <div class="input-commands">
-                    <input class="commands" type="text" placeholder="Insira os comandos que vão ser utilizados">
+                    <input class="commands" type="text" placeholder="Insira os comandos que vão ser utilizados (Exemplo: pip install)" v-model="commands">
+                </div>
+                <div class="input-submit">
+                    <input class="submit" type="submit" value="Criar dockerfile">
                 </div>
             </form>
         </div>
@@ -56,6 +62,33 @@ export default{
   components: {
     Sidebar,
     Back
+  },
+  data(){
+    return{
+        baseImage: "",
+        port: "",
+        commands: "",
+        errorMessage: ""
+    };
+  },
+  methods: {
+    submitForm(){
+        if (!this.baseImage) {
+            this.errorMessage = "Por favor, escolha uma imagem base";
+            return;
+        }
+        if (!this.port) {
+            this.port = "8080";
+        }
+        this.errorMessage = "";
+        const formDockerfile = {
+            baseImage: this.baseImage,
+            port: this.port,
+            commands: this.commands
+        }
+        const formDockerfileJson = JSON.stringify(formDockerfile);
+        console.log(formDockerfileJson);
+    }
   }
 }
 </script>
@@ -77,8 +110,20 @@ h2{
     margin-top: 30px;
 }
 
+.error-message{
+    color: #ff2c2c;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 15px;
+}
+
 ::placeholder{
     color: #e7e7e7;
+}
+
+label{
+    font-size: 18px;
 }
 
 input[type=radio], input[type=flexbox]{
@@ -98,6 +143,22 @@ input[type=text]{
     padding-right: 2.5%;
     font-size: 18px;
     margin-top: 30px;
+}
+
+.submit{
+    background-color: #148f60;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 70px;
+    border-radius: 50px;
+    font-size: 18px;
+    margin-top: 80px;
+    cursor: pointer;
+}
+
+.submit:hover{
+    background-color: #14af74;
 }
 
 .input-requeriments{
@@ -124,6 +185,7 @@ input[type=text]{
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    height: 1100px;
 }
 
 .top{
@@ -187,6 +249,16 @@ input[type=text]{
         margin-top: 25px;
     }
 
+    .error-message{
+        color: #ff2c2c;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    label{
+        font-size: 14px;
+    }
+
     input[type=radio], input[type=flexbox]{
         transform: scale(1);
         float: right;
@@ -202,6 +274,14 @@ input[type=text]{
         margin-top: 25px;
     }
 
+    .submit{
+        height: 65px;
+        border-radius: 35px;
+        font-size: 14px;
+        margin-top: 75px;
+        cursor: pointer;
+    }
+
     .input-requeriments{
         margin-top: 55px;
     }
@@ -215,6 +295,7 @@ input[type=text]{
         padding-left: 115px;
         padding-right: 45px;
         gap: 25px;
+        height: 950px;
     }
 
     .sidebar{

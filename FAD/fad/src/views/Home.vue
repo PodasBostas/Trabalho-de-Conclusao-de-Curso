@@ -176,7 +176,7 @@ h1{
     height: 75px;
     width: 100%;
     background-color: #1245A8;
-    border-radius: 50px 50px 0 0;
+    border-radius: 40px 40px 0 0;
     padding-left: 2%;
     padding-right: 2%;
     border-bottom: 1px solid;
@@ -201,7 +201,7 @@ h1{
     height: 75px;
     width: 100%;
     background-color: #1245A8;
-    border-radius: 0 0 50px 50px;
+    border-radius: 0 0 40px 40px;
     padding-left: 2%;
     padding-right: 1%;
     display: flex;
