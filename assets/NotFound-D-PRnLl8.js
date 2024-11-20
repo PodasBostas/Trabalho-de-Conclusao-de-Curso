@@ -1,0 +1,1 @@
+import{_ as o,c as n,a as t,o as a}from"./index-Dsej9PJs.js";const s={},c={class:"notfound-page"};function r(d,e){return a(),n("div",c,e[0]||(e[0]=[t("h1",null,"Página não encontrada",-1)]))}const f=o(s,[["render",r],["__scopeId","data-v-ef751603"]]);export{f as default};
